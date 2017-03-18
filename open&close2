@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <SCRIPT language=JavaScript>
+function showmenu(id) {
+var list = document.getElementById("list"+id);
+var menu = document.getElementById("menu"+id)
+if (list.style.display=="none") {
+document.getElementById("list"+id).style.display="block";
+menu.className = "title1";
+}else {
+document.getElementById("list"+id).style.display="none";
+menu.className = "title";
+}
+}
+</SCRIPT>
+    <title>无标题文档</title>
+</head>
+
+<body>
+
+<DIV class="title1" id=menu1 onClick="showmenu('1') "> <FONT color=#ff0000>北海道</FONT> </DIV>
+<DIV class=contentmenu id=list1 style="DISPLAY: none">
+<UL>
+    <LI>道北
+    <LI>道央
+    <LI>道东
+    <LI>道南
+    <LI>札幌 </LI>
+</UL>
+</DIV>
+<DIV class="title" id=menu2 onClick="showmenu('2') "> 东北</DIV>
+<DIV class=contentmenu id=list2 style="DISPLAY: none">
+<UL>
+    <LI>青森县
+    <LI>岩手县
+    <LI>宫城县
+    <LI>秋田县
+    <LI>山形县
+    <LI>福岛县 </LI>
+</UL>
+</DIV>
+<DIV class="title" id=menu3 onClick="showmenu('3') "> 关东</DIV>
+<DIV class=contentmenu id=list3 style="DISPLAY: none">
+<UL>
+    <LI>茨城县
+    <LI>枥木县
+    <LI>群马县
+    <LI>崎玉县
+    <LI>千叶县
+    <LI>东京都
+    <LI>神奈川县 </LI>
+</UL>
+</DIV>
+<DIV class="title" id=menu4 onClick="showmenu('4') ">中部</DIV>
+<DIV class=contentmenu id=list4 style="DISPLAY: none">
+<UL>
+    <LI>山梨县
+    <LI>长野县
+    <LI>新泻县
+    <LI>富山县
+    <LI>石川县
+    <LI>福井县
+    <LI>岐阜县
+    <LI>静冈县
+    <LI>爱知县 </LI>
+</UL>
+</DIV>
+<DIV class="title" id=menu5 onClick="showmenu('5') "> 近畿</DIV>
+<DIV class=contentmenu id=list5 style="DISPLAY: none">
+<UL>
+    <LI>三重县
+    <LI>滋贺县
+    <LI>京都府
+    <LI>大阪府
+    <LI>兵库县
+    <LI>奈良县
+    <LI>和歌山县 </LI>
+</UL>
+</DIV>
+<DIV class="title" id=menu6 onClick="showmenu('6') "> 中国</DIV>
+<DIV class=contentmenu id=list6 style="DISPLAY: none">
+<UL>
+    <LI>鸟取县
+    <LI>岛根县
+    <LI>冈山县
+    <LI>广岛县
+    <LI>山口县 </LI>
+</UL>
+</DIV>
+<DIV class="title" id=menu7 onClick="showmenu('7') "> 四国</DIV>
+<DIV class=contentmenu id=list7 style="DISPLAY: none">
+<UL>
+    <LI>德岛县
+    <LI>香川县
+    <LI>爱媛县
+    <LI>高知县 </LI>
+</UL>
+</DIV>
+<DIV class="title" id=menu8 onClick="showmenu('8') "> 九州</DIV>
+<DIV class=contentmenu id=list8 style="DISPLAY: none">
+<UL>
+    <LI>福冈县
+    <LI>佐贺县
+    <LI>长崎县
+    <LI>熊本县
+    <LI>大分县
+    <LI>宫崎县
+    <LI>鹿儿岛县 </LI>
+</UL>
+</DIV>
+</body>
+</html>
