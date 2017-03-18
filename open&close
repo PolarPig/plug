@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8" />
+<script type="text/javascript">
+//===========================点击展开关闭效果====================================
+/*
+函数一共有5个参数，作用如下：
+oSourceObj：点击事件的对象，类型为DOM对象，或者对象的id；
+oTargetObj：展开关闭的对象，类型为DOM对象，或者对象的id；
+shutAble：对象是否可关闭，类型为布尔值,可选，默认为false；
+oOpenTip：对象关闭时，点击源的文字，类型为String,可选；
+oShutTip：对象打开时，点击源的文字，类型为String,可选.
+*/
+function openShutManager(oSourceObj,oTargetObj,shutAble,oOpenTip,oShutTip){
+var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
+var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+var openTip = oOpenTip || "";
+var shutTip = oShutTip || "";
+if(targetObj.style.display!="none"){
+   if(shutAble) return;
+   targetObj.style.display="none";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = shutTip; 
+   }
+} else {
+   targetObj.style.display="block";
+   if(openTip  &&  shutTip){
+    sourceObj.innerHTML = openTip; 
+   }
+}
+}
+</script>
+<title>open&close</title>
+</head>
+<body>
+<p><a href="###" onclick="openShutManager(this,'box')">点击展开</a></p>
+<p id="box" style="display:none">
+   这里面放的是box的内容.
+</p>
+<p><a href="###" onclick="openShutManager(this,'box2',true)">点击展开</a></p>
+<p id="box2" style="display:none">
+   这里面放的是box的内容.
+</p>
+<p><a href="###" onclick="openShutManager(this,'box3',false,'点击关闭','点击展开')">点击展开</a></p>
+<p id="box3" style="display:none">
+   这里面放的是box的内容.
+</p>
+<p><button onclick="openShutManager(this,'box4',false,'点击关闭','点击展开')">点击展开</button></p>
+<p id="box4" style="display:none">
+   这里面放的是box的内容.
+</p>
+</body>
+</html>
