@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>三角形直出</title>
+
+	<style type="text/css">
+		body {
+			margin: 0;
+		}
+
+		#container {
+			width: 1000px;
+			margin: 50px auto;
+		}
+
+		#controller {
+			width: 400px;
+			height: auto;
+			float: left;
+			border: 2px solid #D4D4D4;
+			padding: 10px;
+		}
+
+		dl {
+			height: 60px;
+		}
+
+		dt {
+			margin-bottom: 10px;
+			font-weight: bold;
+			display: inline-block;
+			float: left;
+			margin-right: 10px;
+		}
+
+		dd {
+			float: left;
+			padding-left: 0;
+			margin-left: 10px;
+			position: relative;
+			top: -12px;
+		}
+
+		.radios {
+			display: inline-block;
+			padding: 5px 8px;
+			background: #FFF;
+			border: 2px solid #D4D4D4;
+			cursor: pointer;
+			margin-right: 5px;
+			margin-top: 5px;
+			min-width: 70px;
+			text-align: center;
+		}
+
+		.radios.current,
+		.radios:hover,
+		.radios.current:hover {
+			border: 2px solid #3B94C7;
+			color: #3B94C7;
+			background: #EEEEEE;
+			position: relative;
+		}
+
+		.radios:hover {
+			border-color: #D4D4D4;
+		}
+
+		.radios.current:before {
+			content: '';
+			width: 0;
+			height: 0;
+			position: absolute;
+			left: -1px;
+			top: -1px;
+			border-left: 10px solid #3B94C7;
+			border-bottom: 10px solid rgba(0, 0, 0, 0);
+			border-right: none;
+		}
+
+		.radios.current:after {
+			content: '';
+			width: 0;
+			height: 0;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			border-right: 4px solid #3B94C7;
+			border-bottom: 4px solid #3B94C7;
+			border-left: 4px solid rgba(0, 0, 0, 0);
+			border-top: 4px solid rgba(0, 0, 0, 0);
+		}
+
+
+		#box {
+			float: left;
+			margin-left: 200px;
+			margin-top: 100px;
+		}
+
+		#tipwapper {
+			border: 1px solid #EEEEEE;
+			position: relative;
+			width: 100px;
+			height: 100px;
+		}
+
+		#tip {
+			display: inline-block;
+			width: 0;
+			height: 0;
+			border: 50px solid #3B94C7;
+			position: absolute;
+		}
+
+		textarea {
+			width: 350px;
+			height: 150px;
+			resize: none;
+			border: 2px solid #D4D4D4;
+			padding: 10px;
+		}
+
+		h1 {
+			color: #DD5500;
+			font-family: "Microsoft Yahei"
+		}
+
+		dt {
+			color: #DD5500;
+		}
+	</style>
+	<script id="jquery_183" type="text/javascript" class="library" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+</head>
+
+<body>
+	<div id="container">
+		<h1>通过CSS边框画三角形</h1>
+		<div id="controller">
+			<dl>
+				<dt>左边框</dt>
+				<dd class="radios radio1" data-id="1">透明边框</dd>
+				<dd class="radios radio1" data-id="2">无边框</dd>
+				<dd class="radios radio1 current" data-id="3">有边框</dd>
+				<dd><input type="hidden" id="left" value="3" /></dd>
+			</dl>
+			<dl>
+				<dt>上边框</dt>
+				<dd class="radios radio2" data-id="1">透明边框</dd>
+				<dd class="radios radio2" data-id="2">无边框</dd>
+				<dd class="radios radio2 current" data-id="3">有边框</dd>
+				<dd><input type="hidden" id="top" value="3" /></dd>
+			</dl>
+			<dl>
+				<dt>右边框</dt>
+				<dd class="radios radio3" data-id="1">透明边框</dd>
+				<dd class="radios radio3" data-id="2">无边框</dd>
+				<dd class="radios radio3 current" data-id="3">有边框</dd>
+				<dd><input type="hidden" id="right" value="3" /></dd>
+			</dl>
+			<dl>
+				<dt>下边框</dt>
+				<dd class="radios radio4" data-id="1">透明边框</dd>
+				<dd class="radios radio4" data-id="2">无边框</dd>
+				<dd class="radios radio4 current" data-id="3">有边框</dd>
+				<dd><input type="hidden" id="bottom" value="3" /></dd>
+			</dl>
+
+			<textarea id="input" readonly></textarea>
+		</div>
+		<div id="box">
+			<div id="tipwapper">
+				<div id="tip"></div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+		$(".radios").each(function () {
+			$(this).click(function () {
+				// if($(this).hasClass("current")){
+				// 	$(this).removeClass("current");
+				// 	callback(null);
+				// 	return;
+				// }
+				$(this).parent().find(".radios").removeClass("current");
+				$(this).addClass("current");
+				$(this).parent().find("input").val($(this).data("id"));
+				change();
+			});
+		});
+
+		function change() {
+			var color = "50px solid #3B94C7";
+			var transparent = "50px solid rgba(0,0,0,0)";
+			var leftVal = $("#left").val();
+			var input = "";
+			var leftBorder = "";
+			if (leftVal == 1) {
+				leftBorder = transparent;
+			} else if (leftVal == 2) {
+				leftBorder = "none";
+			} else if (leftVal == 3) {
+				leftBorder = color;
+			}
+			$("#tip").css("border-left", leftBorder);
+			input += "border-left:" + leftBorder + "\n";
+
+
+			var topVal = $("#top").val();
+			var topBorder = "";
+			if (topVal == 1) {
+				topBorder = transparent;
+			} else if (topVal == 2) {
+				topBorder = "none";
+			} else if (topVal == 3) {
+				topBorder = color;
+			}
+			$("#tip").css("border-top", topBorder);
+			input += "border-top:" + topBorder + "\n";
+
+
+			var rightVal = $("#right").val();
+			var rightBorder = "";
+			if (rightVal == 1) {
+				rightBorder = transparent;
+			} else if (rightVal == 2) {
+				rightBorder = "none";
+			} else if (rightVal == 3) {
+				rightBorder = color;
+			}
+			$("#tip").css("border-right", rightBorder);
+			input += "border-right:" + rightBorder + "\n";
+
+
+
+			var bottomVal = $("#bottom").val();
+			var bottomBorder = "";
+			if (bottomVal == 1) {
+				bottomBorder = transparent;
+			} else if (bottomVal == 2) {
+				bottomBorder = "none";
+			} else if (bottomVal == 3) {
+				bottomBorder = color;
+			}
+			$("#tip").css("border-bottom", bottomBorder);
+			input += "border-bottom:" + bottomBorder + "\n";
+
+
+			$("#input").val(input);
+		}
+		change();
+	</script>
+</body>
+
+</html>
