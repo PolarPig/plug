@@ -10,3 +10,17 @@
         $(".hidetext").toggle();
       });
     });
+
+*tab*
+
+    var $segments = $('.segment li');
+    $segments.each(function (index, el) {
+        var $el = $(el);
+        $el.click(function () {
+            $segments.removeClass('active');
+            $el.addClass('active');
+            $('.content').hide();
+            $('.content:eq(' + index + ')').show();
+        });
+    });
+    $('#case1').click();
