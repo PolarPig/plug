@@ -4,9 +4,9 @@
 
 *toggle*
 
-`$(document).ready(function () {
-`   $(".hidetext").hide();
-`   $("button").click(function () {
-`       $(".hidetext").toggle();
-`   });
-`});
+`$(document).ready(function () {`
+`   $(".hidetext").hide();`
+`   $("button").click(function () {`
+`       $(".hidetext").toggle();`
+`   });`
+`});`
