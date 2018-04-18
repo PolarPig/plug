@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        .el-row {
+            margin-bottom: 20px;
+        }
+
+        .el-col {
+            border-radius: 4px;
+        }
+
+        .bg-purple-dark {
+            background: #99a9bf;
+        }
+
+        .bg-purple {
+            background: #d3dce6;
+        }
+
+        .bg-purple-light {
+            background: #e5e9f2;
+        }
+
+        .grid-content {
+            border-radius: 4px;
+            min-height: 36px;
+            text-align: center;
+            line-height: 36px;
+        }
+
+        .row-bg {
+            padding: 10px 0;
+            background-color: #f9fafc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <el-row type="flex" class="row-bg" justify="space-around">
+            <el-col :span="6">
+                <div class="grid-content bg-purple">
+
+                    <el-button @click="open">原谅按钮</el-button>
+
+                </div>
+            </el-col>
+            <el-col :span="6">
+                <div class="grid-content bg-purple-light">
+
+                    <el-switch v-model="value" @change="test" active-text="原谅" inactive-text="不原谅" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
+
+                </div>
+            </el-col>
+            <el-col :span="6">
+                <div class="grid-content bg-purple">
+
+                    <el-button @click="close">不原谅了</el-button>
+
+                </div>
+            </el-col>
+        </el-row>
+    </div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    let cl = document.body.style;
+
+    const vm = new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                visible: false,
+                value: false
+            }
+        },
+        methods: {
+            open: function (ev) {
+                this.$confirm('是否选择一键原谅', '一键原谅', {
+                    confirmButtonText: '确定原谅',
+                    cancelButtonText: '取消原谅',
+                    type: 'warning',
+                    center: true
+                }).then(() => {
+                    this.$message({
+                            type: 'success',
+                            message: '原谅成功！'
+                        }),
+                        cl.backgroundColor = "#00ff00"
+                }).catch(() => {
+                    this.$message({
+                            type: 'info',
+                            message: '原谅失败！'
+                        }),
+                        cl.backgroundColor = "#fff"
+                });
+            },
+            test: function (ev) {
+
+                console.log(ev);
+
+                if (ev == true) {
+
+                    cl.backgroundColor = "#00ff00";
+
+                } else {
+
+                    cl.backgroundColor = "#fff";
+
+                }
+            },
+            close: function () {
+
+                cl.backgroundColor = "#fff";
+
+            }
+        }
+    })
+</script>
+
+</html>
